@@ -27,6 +27,13 @@ package com.davidbeckingsale.java.jGB;
 
 
 import java.io.File;
+import java.io.FileWriter;
+
+import java.util.Date;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 
 
 
@@ -45,15 +52,23 @@ public class JGBLog {
 
 
   private File logFile;
+  private static SimpleDateFormat timeFormat;
+  private static FileWriter writer;
 
 
 
   /**
-   * Constructor to open a new log file, filename is log-TIME-DATE.txt
+   * Constructor to open a new log file, filename is log-TIME-at-DATE.txt
    */
-  public Log() {
-    logFile = new File("log-" + System.getDate() + "-" + System.getCurrentTime());
+  public JGBLog() throws java.io.IOException {
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    timeFormat = new SimpleDateFormat("HH-mm-ss");
+
+    Date date = new Date();
+    logFile = new File("log-" + dateFormat.format(date) + "-at-" + timeFormat.format(date));
     logFile.createNewFile();
+
+    writer = new FileWriter(logFile, true);
   } // Log constructor
 
 
@@ -65,8 +80,12 @@ public class JGBLog {
    * logged.
    * @param message The message to be logged.
    */
-  public static void Write(String component, String message) {
-    String logString = component + " logged message: " + message +"at "; //time and date needed here 
+  public static void Write(String component, String message) throws java.io.IOException {
+    Date date = new Date();
+    String logString = component + " logged message: " + message + " at " + timeFormat.format(date);
+    writer.write(logString);
+    writer.write(System.getProperty("line.separator"));
+    writer.flush();
   } // Write
 
 

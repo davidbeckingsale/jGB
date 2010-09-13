@@ -22,7 +22,7 @@
 package com.davidbeckingsale.java.jGB;
 
 /**
- * Emulated z80 cpu, not the same as the normal z80, as there are
+ * Emulated Z80 cpu, not the same as the normal z80, as there are
  * differences
  *
  * Created: 09/11/10
@@ -33,9 +33,9 @@ package com.davidbeckingsale.java.jGB;
  */
 public class JGBZ80 extends JGBComponent {
   //Registers
-  private byte I;
-  private byte R; // R - memory refresh register
-  private byte A;
+  private int I;
+  private int R; // R - memory refresh register
+  private int A;
   // F is the flag register, the structure is as follows:
   // Bit 7 - S flag, high is op result negative
   // bit 6 - Z flag, high if result 0
@@ -45,20 +45,20 @@ public class JGBZ80 extends JGBComponent {
   // Bit 2 - P/V flag, contains overflow or parity
   // Bit 1 - N flag, high if last op was subtraction
   // Bit 0 - C flag, high if result does not fit in register
-  private byte F;
+  private int F;
 
-  private byte BC;
-  private byte DE;
-  private byte HL;
-  private byte SP;
-  private byte PC;
+  private int BC;
+  private int DE;
+  private int HL;
+  private int SP;
+  private int PC;
 
 
 
   /**
    * Constructor to initialise all registers to empty
    */
-  public CpuZ80(){
+  public JGBZ80(){
     Reset(); // Reset is used to initialise values to avoid repetion
              // of "register = 0" statements
   }
@@ -70,7 +70,7 @@ public class JGBZ80 extends JGBComponent {
    * counter
   */
   private void Reset() {
-    Log.Write("CPUz80", "Resetting");
+    log_.Write("CPUz80", "Resetting");
 
     I = 0;
     R = 0;
@@ -83,13 +83,14 @@ public class JGBZ80 extends JGBComponent {
     PC = 0;
   }
 
+  public void terminate() {}
+
+  public void reset(){}
 
 
   // Ops start here, grouped by function, one line between each,
   // standard 3 blank lines left between different blocks
-  public void ADD_hl_s(byte ss, byte HL) {
-    this.HL = ss + HL;
+  public void ADD_hl_s(int ss) {
+    HL = (HL + ss) & 0xFF;
   }
-
-  
 } // CpuZ80

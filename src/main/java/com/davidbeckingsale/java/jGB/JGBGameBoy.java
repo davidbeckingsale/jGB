@@ -19,6 +19,7 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
+
 package com.davidbeckingsale.java.jGB;
 
 /**
@@ -34,14 +35,23 @@ public class JGBGameBoy extends JGBComponent {
 
 
 
-  public void init(JGBGameBoy gameBoy, Log log) {
+  public void init(JGBGameBoy gameBoy, JGBLog log) {
     super.init(gameBoy, log);
   }
 
-  /**
+
+
+  public void terminate() {}
+
+
+
+  public void reset() {}
+
+
+/**
    * Method controlling the emulation
    */
   public void emulate() {
-
+    log_.Write("Gameboy", "Emulation started");
   }
 } // GameBoy

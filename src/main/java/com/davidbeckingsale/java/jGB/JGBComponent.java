@@ -35,8 +35,14 @@ public abstract class JGBComponent {
   protected JGBLog log_; // Allow all components to access the log
 
 
-
-  public void init(GameBoy gameboy, Log log) {
+  /**
+   * Init routine initialises the object, setting it's parent gameboy
+   * as well as the log object used for logging events
+   *
+   * @param gameboy The gameboy object that contains this component
+   * @param log The log object to log messages
+   */
+  public void init(JGBGameBoy gameboy, JGBLog log) {
     gameBoy_ = gameboy;
     log_ = log;
   }

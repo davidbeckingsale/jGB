@@ -33,13 +33,14 @@ package com.davidbeckingsale.java.jGB;
  * @since 12/09/2010
  */
 public class jGB {
-  JGBGameBoy gameBoy;
+  static JGBGameBoy gameBoy;
+  static JGBLog log;
 
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws java.io.IOException {
     gameBoy = new JGBGameBoy();
-    log = new Log();
+    log = new JGBLog();
 
     gameBoy.init(gameBoy, log);
     gameBoy.emulate();
