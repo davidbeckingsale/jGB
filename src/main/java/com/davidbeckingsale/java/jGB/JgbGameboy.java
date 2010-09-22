@@ -20,7 +20,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
+
+
 package com.davidbeckingsale.java.jGB;
+
+
 
 /**
  * Class for a GameBoy, inherits from GBComponent 

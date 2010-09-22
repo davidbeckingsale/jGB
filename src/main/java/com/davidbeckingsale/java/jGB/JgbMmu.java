@@ -20,7 +20,19 @@
  * Boston, MA 02110-1301, USA.
  */
 
+
+
 package com.davidbeckingsale.java.jGB;
+
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.IOException;
+
+
 
 /**
  *
@@ -32,11 +44,43 @@ package com.davidbeckingsale.java.jGB;
  * @since
  */
 public class JgbMmu extends JgbComponent {
+  private byte[] rom;
+
   public void reset() {
-    
+
   }
 
   public void terminate() {
-    
+
+  }
+
+  public void loadRom(File romFile) throws IOException {
+    InputStream is = new FileInputStream(romFile);
+
+    // Get the size of the file
+    long length = romFile.length();
+
+    if (length > Integer.MAX_VALUE) {
+      // File is too large
+    }
+
+    // Create the byte array to hold the data
+    rom = new byte[(int)length];
+
+    // Read in the bytes
+    int offset = 0;
+    int numRead = 0;
+    while (offset < rom.length
+           && (numRead=is.read(rom, offset, rom.length-offset)) >= 0) {
+      offset += numRead;
+    }
+
+    // Ensure all the bytes have been read in
+    if (offset < rom.length) {
+      throw new IOException("Could not completely read file "+romFile.getName());
+    }
+
+    // Close the input stream and return bytes
+    is.close();
   }
 } // JGBMmu
