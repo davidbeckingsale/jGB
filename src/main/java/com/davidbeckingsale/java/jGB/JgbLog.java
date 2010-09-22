@@ -47,7 +47,7 @@ import java.text.SimpleDateFormat;
  * @version 1
  * @since 11/9/2010
  */
-public class JGBLog {
+public class JgbLog {
 
 
 
@@ -60,7 +60,7 @@ public class JGBLog {
   /**
    * Constructor to open a new log file, filename is log-TIME-at-DATE.txt
    */
-  public JGBLog() throws java.io.IOException {
+  public JgbLog() throws java.io.IOException {
     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     timeFormat = new SimpleDateFormat("HH-mm-ss");
 
@@ -80,12 +80,17 @@ public class JGBLog {
    * logged.
    * @param message The message to be logged.
    */
-  public static void Write(String component, String message) throws java.io.IOException {
+  public static void Write(String component, String message) {
     Date date = new Date();
     String logString = component + " logged message: " + message + " at " + timeFormat.format(date);
-    writer.write(logString);
-    writer.write(System.getProperty("line.separator"));
-    writer.flush();
+    try {
+      writer.write(logString);
+      writer.write(System.getProperty("line.separator"));
+      writer.flush();
+    }
+    catch (java.io.IOException e) {
+      System.err.println(e);
+    }
   } // Write
 
 

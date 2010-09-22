@@ -1,6 +1,6 @@
-/** GBComponent.java --- 
+/** GBComponent.java ---
  *
- * Copyright (C) 2010 
+ * Copyright (C) 2010
  *
  * Author:  <david@blackmesa>
  *
@@ -8,12 +8,12 @@
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2, or (at
  * your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; see the file COPYING.  If not, write to
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -22,7 +22,7 @@
 package com.davidbeckingsale.java.jGB;
 
 /**
- * Abstract class for each component of the gameboy 
+ * Abstract class for each component of the gameboy
  *
  * Created: 09/12/10
  *
@@ -30,9 +30,9 @@ package com.davidbeckingsale.java.jGB;
  * @version 1
  * @since 12/09/2010
  */
-public abstract class JGBComponent {
-  protected JGBGameBoy gameBoy_; //Each component belongs to a GameBoy
-  protected JGBLog log_; // Allow all components to access the log
+public abstract class JgbComponent {
+  protected JgbGameboy gameBoy_; //Each component belongs to a GameBoy
+  protected JgbLog log_; // Allow all components to access the log
 
 
   /**
@@ -42,7 +42,7 @@ public abstract class JGBComponent {
    * @param gameboy The gameboy object that contains this component
    * @param log The log object to log messages
    */
-  public void init(JGBGameBoy gameboy, JGBLog log) {
+  public void init(JgbGameboy gameboy, JgbLog log) {
     gameBoy_ = gameboy;
     log_ = log;
   }

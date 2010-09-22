@@ -1,4 +1,4 @@
-/** GameBoy.java --- 
+/** JGBGpu.java --- 
  *
  * Copyright (C) 2010 
  *
@@ -20,38 +20,23 @@
  * Boston, MA 02110-1301, USA.
  */
 
-package com.davidbeckingsale.java.jGB;
 
 /**
- * Class for a GameBoy, inherits from GBComponent 
+ * 
  *
- * Created: 09/12/10
+ * Created: 09/15/10
  *
- * @author David Beckingsale
- * @version 1
- * @since 12/09/2010
+ * @author 
+ * @version 
+ * @since 
  */
-public class JGBGameBoy extends JGBComponent {
+public class JgbGpu {
 
-
-
-  public void init(JGBGameBoy gameBoy, JGBLog log) {
-    super.init(gameBoy, log);
+  public void reset() {
+    
   }
 
-
-
-  public void terminate() {}
-
-
-
-  public void reset() {}
-
-
-/**
-   * Method controlling the emulation
-   */
-  public void emulate() {
-    log_.Write("Gameboy", "Emulation started");
+  public void terminate() {
+    
   }
-} // GameBoy
+} // JGBGpu

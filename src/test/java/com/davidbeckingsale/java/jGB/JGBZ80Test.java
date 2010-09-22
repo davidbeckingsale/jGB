@@ -1,4 +1,4 @@
-package com.davidbeckingsale.java;
+package com.davidbeckingsale.java.jGB;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -18,6 +18,7 @@ public class JGBZ80Test
     public JGBZ80Test( String testName )
     {
         super( testName );
+        JGBZ80 cpu = new JGBZ80();
     }
 
     /**

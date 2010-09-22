@@ -31,11 +31,12 @@ package com.davidbeckingsale.java.jGB;
  * @version 1
  * @since 11/9/2010
  */
-public class JGBZ80 extends JGBComponent {
+public class JgbZ80 extends JgbComponent {
   //Registers
   private int I;
   private int R; // R - memory refresh register
   private int A;
+
   // F is the flag register, the structure is as follows:
   // Bit 7 - S flag, high is op result negative
   // bit 6 - Z flag, high if result 0
@@ -58,7 +59,7 @@ public class JGBZ80 extends JGBComponent {
   /**
    * Constructor to initialise all registers to empty
    */
-  public JGBZ80(){
+  public JgbZ80(){
     Reset(); // Reset is used to initialise values to avoid repetion
              // of "register = 0" statements
   }
@@ -90,7 +91,31 @@ public class JGBZ80 extends JGBComponent {
 
   // Ops start here, grouped by function, one line between each,
   // standard 3 blank lines left between different blocks
-  public void ADD_hl_s(int ss) {
-    HL = (HL + ss) & 0xFF;
+
+  /**
+   * Add with carry register pair ss to HL
+   */
+  private void ADC_hl_s(int ss) {
+    int result = HL + ss;
+    int carry = result & 0x00;
+
+    if (carry != 0) {
+      F = F & 0x01;
+    }
+    HL = result & 0xFF;
   }
+
+  /**
+   * Add with carry operand s to the accumulator
+   */
+  private void ADD_A_s(int s) {
+    int result = A + s;
+    int carry = result & 0x00;
+    if (carry !=0) {
+      F = F & 0x01;
+    }
+    A = result & 0xFF;
+  }
+
+  private void ADD_A_n(int n) {}
 } // CpuZ80
