@@ -19,7 +19,7 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
-
+package com.davidbeckingsale.java.jGB;
 
 /**
  * 
@@ -30,7 +30,12 @@
  * @version 
  * @since 
  */
-public class JgbGpu {
+public class JgbGpu extends JgbComponent {
+
+
+  public void init(JgbGameboy gameBoy, JgbLog log) {
+    super.init(gameBoy, log);
+  }
 
   public void reset() {
     

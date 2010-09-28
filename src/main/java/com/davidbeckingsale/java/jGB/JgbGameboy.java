@@ -25,6 +25,9 @@
 package com.davidbeckingsale.java.jGB;
 
 
+import java.io.File;
+
+
 
 /**
  * Class for a GameBoy, inherits from GBComponent 
@@ -36,10 +39,17 @@ package com.davidbeckingsale.java.jGB;
  * @since 12/09/2010
  */
 public class JgbGameboy extends JgbComponent {
-
+  private JgbMmu mmu;
+  private JgbGpu gpu;
 
 
   public void init(JgbGameboy gameBoy, JgbLog log) {
+    mmu = new JgbMmu();
+    gpu = new JgbGpu();
+
+    mmu.init(gameBoy, log);
+    gpu.init(gameBoy, log);
+
     super.init(gameBoy, log);
   }
 
@@ -52,10 +62,11 @@ public class JgbGameboy extends JgbComponent {
   public void reset() {}
 
 
-/**
+  /**
    * Method controlling the emulation
    */
-  public void emulate() {
-    log_.Write("Gameboy", "Emulation started");
+  public void emulate(File rom) throws java.io.IOException {
+    log_.write("Gameboy", "Emulation started");
+    mmu.loadRom(rom);
   }
 } // GameBoy

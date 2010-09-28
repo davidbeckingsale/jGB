@@ -22,6 +22,13 @@
 
 package com.davidbeckingsale.java.jGB;
 
+
+import java.io.File;
+
+import java.util.Scanner;
+
+
+
 /**
  * Class used when jGB is run. Sets up the emulation environment,
  * initialising all objects before beginning the emulation
@@ -33,16 +40,26 @@ package com.davidbeckingsale.java.jGB;
  * @since 12/09/2010
  */
 public class jGB {
-  static JGBGameBoy gameBoy;
-  static JGBLog log;
+  static JgbGameboy gameBoy;
+  static JgbLog log;
 
 
 
   public static void main(String[] args) throws java.io.IOException {
-    gameBoy = new JGBGameBoy();
-    log = new JGBLog();
+    gameBoy = new JgbGameboy();
+    log = new JgbLog();
+
+    System.out.println("Enter path to rom file: ");
+    String romPath;
+    Scanner in = new Scanner(System.in);
+
+    romPath = in.nextLine();
+
+    in.close();
+
+    File rom = new File(romPath);
 
     gameBoy.init(gameBoy, log);
-    gameBoy.emulate();
+    gameBoy.emulate(rom);
   }
 } // jGB

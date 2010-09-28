@@ -80,7 +80,7 @@ public class JgbLog {
    * logged.
    * @param message The message to be logged.
    */
-  public static void Write(String component, String message) {
+  public static void write(String component, String message) {
     Date date = new Date();
     String logString = component + " logged message: " + message + " at " + timeFormat.format(date);
     try {
@@ -93,6 +93,12 @@ public class JgbLog {
     }
   } // Write
 
-
-
+  /**
+   * Method that dumps the rom to the log file. Use only for debugging purposes
+   *@param file The byte array of the rom
+   */
+  public static void dump(byte[] file) {
+    String romString = new String(file);
+    write("rom", romString);
+  }
 } // Log
